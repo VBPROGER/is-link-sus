@@ -16,7 +16,7 @@
 **YOU DOWNLOADED THIS PROGRAM AND YOU**
 <br>
 **CLICKED ON MALICIOUS LINK.**
-<br><br><br>
+<br>
 ## Linux & Mac OS fast installation
 Run this in terminal:
 ```bash
