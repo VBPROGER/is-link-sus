@@ -25,5 +25,5 @@ clear && curl https://raw.githubusercontent.com/VBPROGER/is-link-sus/main/isLink
 ## Linux & Mac OS fast running (ONLY IF INSTALLED)
 Run this in terminal:
 ```bash
-islinksus
+~/islinksus
 ```
