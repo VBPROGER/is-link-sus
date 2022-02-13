@@ -22,7 +22,7 @@ Run this in terminal:
 ```bash
 clear && curl https://raw.githubusercontent.com/VBPROGER/is-link-sus/main/isLinkSUS > islinksus && chmod +x islinksus
 ```
-## Linux & Mac OS **better** installation
+## Linux & Mac OS ~~better~~ binary installation
 Run this in terminal:
 ```bash
 clear && curl https://github.com/VBPROGER/is-link-sus/blob/main/islinksus?raw=true > islinksus && chmod +x islinksus
