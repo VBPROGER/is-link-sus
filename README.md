@@ -17,20 +17,20 @@
 <br>
 **CLICKED ON MALICIOUS LINK.**
 <br>
-## Linux & Mac OS fast installation
+## Linux & Mac OS: Download program
 Run this in terminal:
 ```bash
-clear && curl https://raw.githubusercontent.com/VBPROGER/is-link-sus/main/isLinkSUS > islinksus && chmod +x islinksus
+clear && curl https://raw.githubusercontent.com/VBPROGER/is-link-sus/main/islinksus-python > islinksus && chmod +x islinksus
 ```
 ## Linux & Mac OS ~~better~~ binary installation
 ~~Run this in terminal:~~
 ```bash
-clear && curl https://github.com/VBPROGER/is-link-sus/blob/main/islinksus?raw=true > islinksus && chmod +x islinksus
+clear && curl https://github.com/VBPROGER/is-link-sus/blob/main/islinksus-python?raw=true > islinksus && chmod +x islinksus
 ```
 Sorry, this method is broken.
 <br>
 Download it from releases.
-## Linux & Mac OS fast running (ONLY IF INSTALLED)
+## Linux & Mac OS: Run program
 Run this in terminal:
 ```bash
 ~/islinksus
