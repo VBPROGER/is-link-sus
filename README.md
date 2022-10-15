@@ -22,13 +22,7 @@ Run this in terminal:
 ```bash
 clear && curl https://raw.githubusercontent.com/VBPROGER/is-link-sus/main/islinksus-python > islinksus && chmod +x islinksus
 ```
-## Linux & Mac OS ~~better~~ binary installation
-~~Run this in terminal:~~
-```bash
-clear && curl https://github.com/VBPROGER/is-link-sus/blob/main/islinksus-python?raw=true > islinksus && chmod +x islinksus
-```
-Sorry, this method is broken.
-<br>
+## Linux & Mac OS binary installation (v1.0)
 Download it from releases.
 ## Linux & Mac OS: Run program
 Run this in terminal:
