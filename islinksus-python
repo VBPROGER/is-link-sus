@@ -1,12 +1,14 @@
 #!/usr/bin/python3
 try:
-    import colorama, os, time
+    import os, time, sys, requests
     from colorama import init
     from colorama import Fore, Back, Style
-except BaseException as e:
-    print('islinksus: Sorry, you need to install "colorama" and "time" libraries to use this program.')
-    print('islinksus Error code: '+str(e))
-    exit()
+except BaseException:
+    os.system('pip3 install colorama requests')
+    import requests
+    from colorama import init
+    from colorama import Fore, Back, Style
+
 init(autoreset = True)
 
 os.system('clear || cls || :')
@@ -21,6 +23,7 @@ Welcome_Text = f"""
 {Fore.CYAN}(_)(____/(___)(_)(_) (_){Fore.LIGHTCYAN_EX}(_) (_)(____/`\___/'(____/
 {Fore.CYAN}                                           {Fore.LIGHTCYAN_EX}       
 {Fore.CYAN}                                                  {Fore.LIGHTCYAN_EX}
+The program needs internet to check some links.
 """
 
 def Log(Text = ''):
@@ -34,76 +37,44 @@ def Info(Text = ''):
         print(Fore.BLUE+'[INFO] '+Fore.LIGHTMAGENTA_EX + 'is'+Fore.LIGHTBLUE_EX+'link'+Fore.LIGHTRED_EX+'sus: '+ Fore.LIGHTGREEN_EX +str(Text))
 def Welcome():
     print(Welcome_Text)
-    Log('Welcome!')
+    if not (('-s' in sys.argv) or ('--silent' in sys.argv)): Log('Welcome!')
     URL = str(input(Fore.RED + 'Enter your link here: -> ' + Fore.MAGENTA))
     return str(URL)
 def Check(link):
+    http_malicious_links = requests.get('https://raw.githubusercontent.com/VBPROGER/is-link-sus/main/db/smalldb.db')
 
-    http_malicious_links = ['donfree.space', '2no.co', 'ezstat.ru', '02ip.ru', 'iplis.ru',
-    'yip.su', 'iplogger.ru', 'iplogger.com', 'iplogger.co', 'iplogger.info', 'ipgrabber.ru',
-    'ipgraber.ru', 'grabify.link', 'grabify.com', 'partpicker.shop', 'websafe.online', 'sportshub.bar', 
-    'herald.sbs', 'locations.quest', 'lovebird.guru', 'trulove.guru', 'dateing.club', 'shrekis.life',
-    'headshot.monster', 'gaming-at-my.best', 'progaming.monster', 'yourmy.monster', 'imageshare.best',
-    'screenshot.best', 'gamingfun.me', 'catsnthing.com', 'catsnthings.fun', 'curiouscat.club',
-    'joinmy.site', 'fortnitechat.site', 'fortnight.space', 'freegiftcards.co', 'stopify.co',
-    'leancoding.co', 'spottyfly.com', 'bmwforum.co', 'youshouldclick.us', 'mypic.icu',
-    'crabrave.pw', 'xda-developers.us', 'quickmessage.us', 'discörd.com', 'disçordapp.com',
-    'yoütu.be', 'särahah.pl', 'särahah.eu', 'minecräft.com', 'watches-my.stream', 'xn--yotu-1ra.be',
-    'xn--discrd-zxa.com', 'xn--minecrft-5za.com', 'xn--disordapp-s3a.com', 'xn--srahah-bua.pl',
-    'xda-developers.us', 'xn--srahah-bua.pl', 'goooooooooogle.com', 'myfreecams.com',
-    'www.myfreecams.com', 'save-your-pc.info', 'embed.sendtonews.com', 'fgoogle.com',
-    'www.sportsinteraction.com', 'www.sportsinteraction.com', 'twitter.cm', 'ttwitter.com',
-    'com-notice.info', 'critical-alert.info', 'srchpx.xyz', '03-secure.com', 'startpageing123.com',
-    'x.acme.com', 'rhino.acme.com', 'aceax.batsmansh.top', 'ndefq.batsmansh.top', 'aceax.batsmansh.top',
-    'velocedn.com', 'filesendsuite.dl.myway.com', 'myway.com', 'ceromobi.club', '1493361689.rsc.cdn77.org/',
-    'adsmws.cloudapp.net', 'androidads23.adcolony.com', 'analytics.publitas.com', 'annualconsumersurvey.com',
-    'apps.id.net', 'quickcash-system.com', 'performanceadexchange.com', 'www.performanceadexchange.com',
-    'privacyassistant.net', 'ext.privacyassistant.net', 'www.dobre-programy.pl', 'www.mywot.com',
-    'www.mywot.net', 'tags.news.com.au', 'www.gamblerush.com', 'imysurvey.com',
-    '4436230.fls.doubleclick.net', 'tracking.miui.com', 'a.stat.xiaomi.com', 'api.ad.xiaomi.com',
-    'api.admob.xiaomi.com', 'e.ad.xiaomi.com', 'zeus.ad.xiaomi.com', 'data.sec.intl.miui.com', 'clickopon.com',
-    'click.grandonmedia.com', 'click.elixmedia.com', 'click.enatimedia.com', 'deshmedia.com', 'dsp.face2trade.com',
-    'steamdiscord.app', 'discord.link', 'steamcommnuntiy', 'discord-niltro.com', 'discord.gifts', 'discodnitro.ru',
-    'dlscord.gifts', 'discordapp.chat', 'dlscordapp.gift', 'discordapp.cc', 'dlscordapp.chat', 'steamcommunity.link',
-    'discord-airdrop.com', 'dlscord-app.info', 'discord-giift.ru', 'discord-gift.me', 'dlscord-gift.me',
-    'nitrodlscord.xyz', 'dlscord.app', 'dlscord-nitro.click', 'companyforyouthsome.com', 'coolerones.com', 'enjoyhop.com',
-    'foryouthsome.com', 'futurgift.com', 'innotvgood.com', 'iwishgoods.com', 'kiaasc.com', 'https://2021-free-robux-generator.000webhostapp.com',
-    'https://alerta208.000webhostapp.com', 'https://elisesnaturals.com', 'https://heyrhdlcs.weebly.com', 'https://hipotecario00011111.000webhostapp.com',
-    'https://poin-kredivo.com/index1.html', 'https://pressandpack.com/fixed/meine/iM78ElUHGSp8iXYq8/meine.Anmelden.php?cgi_auth=MjnDUqyBRxbKsJPG3T7VUqqYt8xZHvqBIeujiggfhyNLk92zGZwC1kVy99uInSkjcN5z5jHS2gfeoPIwDqSEoE8NbvvQnRJ450InmY7ywKXArOcGFu9',
-    'https://reportegrupal12.000webhostapp.com', 'http://srnbc-card.com.y8uet5y.cn', 'https://vvpaes-me-index.aqkrdf.cn', 'https://vvpaes-me-index.axiild.cn',
-    'https://vvpaes-me-index.beogqu.cn', 'https://vvpaes-me-index.bxdvpv.cn', 'https://vvpaes-me-index.cqsvgi.cn', 'https://vvpaes-me-index.daxdqc.cn',
-    'https://vvpaes-me-index.dezpcv.cn', 'https://vvpaes-me-index.dlicdq.cn', 'https://vvpaes-me-index.dlofmk.cn', 'https://vvpaes-me-index.dowixy.cn',
-    'https://vvpaes-me-index.ebzhzm.cn', 'https://vvpaes-me-index.egvtpp.cn', 'https://vvpaes-me-index.sllsv7.cn', 'https://www.amaozn.co.jp.lk0vyu.cn',
-    'https://www.amaozn.co.jp.wxr8d1.cn', 'https://www.aqdwnz.cn/aSciTDI1/dbs-wa', 'http://www.cdcacs.cn/nQCbiNp5/dbs-wa', 'https://www.etc-maisal.hgqzwa0.cn',
-    'https://www.etc-meisai.8oyv0db.cn', 'https://www.etc-meisai.jp.ejjdsik.cn', 'https://www.etc-meisai.jp.q1k1h98.cn', 'http://www.nanwza.cn/6Xc0aHGG/dbs-wa',
-    'http://www.qgxauo.cn/u6iJPA6u/dbs-wa', 'http://www.tkyncp.cn/wSqz2ojG/dbs-wa', 'http://www.tkyncp.cn/wRhKzR4l/dbs-wa']
-
-    Log('Checking if in malicious URL list...')
+    Log('Checking if in malicious URL database...')
     if link.startswith('http://') or link.startswith('https://') or link.startswith('ftp://'):
         Log('Link is HTTPS, HTTP or FTP.')
         if link.startswith('http://'):
             Protocol = 'http://'
-            Log('Currently, the link seems to be HTTP.')
+            if not (('-s' in sys.argv) or ('--silent' in sys.argv)):
+                Log('Currently, the link seems to be HTTP.')
         if link.startswith('https://'):
             Protocol = 'https://'
-            Log('Currently, the link seems to be HTTPS. HTTPS is safe.')
+            if not (('-s' in sys.argv) or ('--silent' in sys.argv)):
+                Log('Currently, the link seems to be HTTPS. HTTPS is safe.')
         if link.startswith('ftp://'):
             Protocol = 'ftp://'
-            Log('Currently, the link seems to be FTP.')
+            if not (('-s' in sys.argv) or ('--silent' in sys.argv)):
+                Log('Currently, the link seems to be FTP.')
         link_edited = ''
         for every_link in http_malicious_links:
             every_link = str(every_link)
-            Log('Removing unused parts of link "'+link+'"')
+            if not (('-s' in sys.argv) or ('--silent' in sys.argv)):
+                Log('Removing unused parts of link "'+link+'"')
             link_edited = ''
             link_edited = str(link).replace('\n', '')
             link_edited = link_edited.replace(Protocol, '')
             link_edited = link_edited.split('/')[0]
-            Log('Checking current link with malicious link "'+every_link+'"...')
+            if not (('-s' in sys.argv) or ('--silent' in sys.argv)):
+                Log('Checking current link with malicious link "'+every_link+'"...')
             if link_edited == every_link or link_edited in every_link:
                 Warning('WARNING! Found this link in malicious links list!')
                 return True
             else:
-                Log('Link "'+str(link)+'" seems safe, it doesn'+"'"+'t looks like "'+str(every_link)+'".')
+                if not (('-s' in sys.argv) or ('--silent' in sys.argv)):
+                    Log('Link "'+str(link)+'" seems safe, it doesn'+"'"+'t looks like "'+str(every_link)+'".')
             time.sleep(0.004)
     else:
         Log('Link is NOT HTTPS, HTTP or FTP.')
