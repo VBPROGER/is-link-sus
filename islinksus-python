@@ -44,7 +44,7 @@ def Welcome():
     URL = str(input(Fore.RED + 'Enter your link here: -> ' + Fore.MAGENTA))
     return str(URL)
 def Check(link):
-    http_malicious_links = requests.get('https://raw.githubusercontent.com/VBPROGER/is-link-sus/main/db/smalldb.db')
+    http_malicious_links = requests.get('https://raw.githubusercontent.com/VBPROGER/is-link-sus/main/db/smalldb.db').text.splitlines()
 
     Log('Checking if in malicious URL database...')
     if link.startswith('http://') or link.startswith('https://') or link.startswith('ftp://'):
