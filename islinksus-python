@@ -27,17 +27,20 @@ The program needs internet to check some links.
 """
 
 def Log(Text = ''):
-    if Text != '' and Text != None:
-        print(Fore.LIGHTMAGENTA_EX + 'is'+Fore.LIGHTBLUE_EX+'link'+Fore.LIGHTRED_EX+'sus: '+ Fore.LIGHTGREEN_EX +str(Text))
+    if not (('-s' in sys.argv) or ('--silent' in sys.argv)):
+        if Text != '' and Text != None:
+            print(Fore.LIGHTMAGENTA_EX + 'is'+Fore.LIGHTBLUE_EX+'link'+Fore.LIGHTRED_EX+'sus: '+ Fore.LIGHTGREEN_EX +str(Text))
 def Warning(Text = ''):
-    if Text != '' and Text != None:
-        print(Fore.RED+'[WARNING] '+Fore.LIGHTMAGENTA_EX + 'is'+Fore.LIGHTBLUE_EX+'link'+Fore.LIGHTRED_EX+'sus: '+ Fore.LIGHTGREEN_EX +str(Text))
+    if not ('--silentw' in sys.argv):
+        if Text != '' and Text != None:
+            print(Fore.RED+'[WARNING] '+Fore.LIGHTMAGENTA_EX + 'is'+Fore.LIGHTBLUE_EX+'link'+Fore.LIGHTRED_EX+'sus: '+ Fore.LIGHTGREEN_EX +str(Text))
 def Info(Text = ''):
-    if Text != '' and Text != None:
-        print(Fore.BLUE+'[INFO] '+Fore.LIGHTMAGENTA_EX + 'is'+Fore.LIGHTBLUE_EX+'link'+Fore.LIGHTRED_EX+'sus: '+ Fore.LIGHTGREEN_EX +str(Text))
+    if not ('--silenti' in sys.argv):
+        if Text != '' and Text != None:
+            print(Fore.BLUE+'[INFO] '+Fore.LIGHTMAGENTA_EX + 'is'+Fore.LIGHTBLUE_EX+'link'+Fore.LIGHTRED_EX+'sus: '+ Fore.LIGHTGREEN_EX +str(Text))
 def Welcome():
-    print(Welcome_Text)
-    if not (('-s' in sys.argv) or ('--silent' in sys.argv)): Log('Welcome!')
+    if not (('-s' in sys.argv) or ('--silent' in sys.argv)): print(Welcome_Text)
+    Log('Welcome!')
     URL = str(input(Fore.RED + 'Enter your link here: -> ' + Fore.MAGENTA))
     return str(URL)
 def Check(link):
@@ -48,27 +51,22 @@ def Check(link):
         Log('Link is HTTPS, HTTP or FTP.')
         if link.startswith('http://'):
             Protocol = 'http://'
-            if not (('-s' in sys.argv) or ('--silent' in sys.argv)):
-                Log('Currently, the link seems to be HTTP.')
+            Log('Currently, the link seems to be HTTP.')
         if link.startswith('https://'):
             Protocol = 'https://'
-            if not (('-s' in sys.argv) or ('--silent' in sys.argv)):
-                Log('Currently, the link seems to be HTTPS. HTTPS is safe.')
+            Log('Currently, the link seems to be HTTPS. HTTPS is safe.')
         if link.startswith('ftp://'):
             Protocol = 'ftp://'
-            if not (('-s' in sys.argv) or ('--silent' in sys.argv)):
-                Log('Currently, the link seems to be FTP.')
+            Log('Currently, the link seems to be FTP.')
         link_edited = ''
         for every_link in http_malicious_links:
             every_link = str(every_link)
-            if not (('-s' in sys.argv) or ('--silent' in sys.argv)):
-                Log('Removing unused parts of link "'+link+'"')
+            Log('Removing unused parts of link "'+link+'"')
             link_edited = ''
             link_edited = str(link).replace('\n', '')
             link_edited = link_edited.replace(Protocol, '')
             link_edited = link_edited.split('/')[0]
-            if not (('-s' in sys.argv) or ('--silent' in sys.argv)):
-                Log('Checking current link with malicious link "'+every_link+'"...')
+            Log('Checking current link with malicious link "'+every_link+'"...')
             if link_edited == every_link or link_edited in every_link:
                 Warning('WARNING! Found this link in malicious links list!')
                 return True
@@ -96,7 +94,5 @@ def Check(link):
 URL = Welcome()
 Status = Check(link = URL)
 Log('Finished scanning link "'+URL+'"! Results:')
-if Status == True:
-    Warning("This link is dangerous! Don't click it.")
-else:
-    Info("This link seems safe! But be aware, it may be suspicious...")
+if Status: Warning("This link is dangerous! Don't click it.")
+else: Info("This link seems safe! But be aware, it may be suspicious...")
