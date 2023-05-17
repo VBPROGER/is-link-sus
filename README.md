@@ -1,5 +1,7 @@
 # :heavy_check_mark: is-link-sus link checker :heavy_check_mark:
 :male_detective: This program checks if link is malicious or suspicious.<br><br>
+# :file_cabinet: Archived :file_cabinet:
+This repository is archived and will not be continued.
 # :warning: WARNING! :warning:
 <ins>**THE SOURCE CODE HAS MALICIOUS LINKS IN IT. NEVER COPY, SHARE, OR GO TO THEM. THEY CAN HARM YOUR COMPUTER IF YOU GO TO THEM! I'M NOT RESPONSIBLE FOR ANY PROBLEMS.**</ins>
 ## :penguin: Linux & Mac OS: Download program :penguin:
