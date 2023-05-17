@@ -1,22 +1,7 @@
 # is-link-sus link checker
-:male_detective: This program checks if link is malicious.
-<br>
-⚠️ **WARNING!** ⚠️
-<br>
-**THE SOURCE CODE HAS MALICIOUS**
-<br>
-**LINKS IN IT. NEVER COPY,**
-<br>
-**SHARE, OR GO TO THEM.**
-<br>
-**THEY CAN HARM YOUR PC!!!**
-<br>
-**I'M NOT RESPONSIBLE FOR ANY PROBLEMS.**
-<br>
-**YOU DOWNLOADED THIS PROGRAM AND YOU**
-<br>
-**CLICKED ON MALICIOUS LINK.**
-<br>
+:male_detective: This program checks if link is malicious.<br><br>
+# ⚠️ WARNING! ⚠️
+<ins>**THE SOURCE CODE HAS MALICIOUS LINKS IN IT. NEVER COPY, SHARE, OR GO TO THEM. THEY CAN HARM YOUR COMPUTER IF YOU GO TO THEM! I'M NOT RESPONSIBLE FOR ANY PROBLEMS.**</ins>
 ## Linux & Mac OS: Download program
 Run this in terminal:
 ```bash
